@@ -10,12 +10,7 @@ configDotenv();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-app.get("/", (req, res) => {
-    res.send("hello")
-});
-
-app.post("/free", async (req, res) => {
+app.post("/api/free", async (req, res) => {
 
     try {
         const message = req.body.messages;
