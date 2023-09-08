@@ -1,6 +1,7 @@
 import express from 'express'
 import OpenAI from 'openai';
 import { configDotenv } from 'dotenv';
+import { freeVersionChatCompletion } from './openai';
 
 const app = express();
 const port = 3000;
@@ -16,33 +17,12 @@ app.get("/", (req, res) => {
 
 app.post("/free", async (req, res) => {
 
-    const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY
-    });
-
     try {
         const message = req.body.messages;
+        const response = freeVersionChatCompletion(message);
 
-        const initialMessage = 
-            {
-            "role": "system",
-            "content": "Your name is Viz, an ai document analyzer assistant. You must only answer with proessionalism and provide well consructed layout for easy readability. A user will first provide you with a document that they needed to analyze or anything related to document analysis. If users provide you with any inappropriate content,  inappropriate questions, or anything that's not professional you can kindly remind them.",
-            "role": "assistant",
-            "content": "Hello, please provide me document you would like me to analyze or ask me questions."
-            }
-
-        const prompt = {
-            role: "user",
-            content: message
-        }
-
-        const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
-            messages: [initialMessage, prompt]
-        })
-
-        console.log(response.choices[0].message)
-        return res.json(response.choices[0].message);
+        console.log(response);
+        return res.send(response);
 
     } catch (err) {
         console.log("[GPT-3.5 ERROR]", err);
