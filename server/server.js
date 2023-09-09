@@ -1,7 +1,7 @@
 import express from 'express'
 import OpenAI from 'openai';
 import { configDotenv } from 'dotenv';
-import { freeVersionChatCompletion } from './openai';
+import { freeVersionChatCompletion } from './openAiApi';
 
 const app = express();
 const port = 3000;
