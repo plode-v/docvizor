@@ -6,7 +6,7 @@ import AboutUs from '@/components/AboutUs'
 const Homepage = () => {
   return (
     // TODO: change background color later
-    <div className='bg-blue-50 m-0 flex flex-col min-h-screen max-w-screen'>
+    <div className='m-0 flex flex-col min-h-screen max-w-screen'>
       <HeroBanner />
       <AboutUs />
     </div>
