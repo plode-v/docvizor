@@ -21,19 +21,22 @@ const HeroBanner = () => {
   })
     
   return (
+    // FIXME: Fix this please
     <div className='flex flex-col items-center pb-20 justify-center w-full h-screen bg-blue-50'>
-      <div className='md:h-[5rem] h-[2.5rem] relative overflow-hidden w-[800px] leading-none'>
-        {arr.map((word, index) => (
-          <h1
-            key={index}
-            className={`md:text-[4.5rem] text-[2.5rem] font-[800] capitalize absolute scroll-text top-0 left-0`}
-          >{arr[4]}</h1>
-        ))}
+      <div className='md:h-[5rem] h-[2.5rem] relative overflow-hidden w-full text-center leading-10 md:leading-[5rem]'>
+        {/* {arr.map((word, index) => (
+          <div key={index}>
+            <h1
+              className={`md:text-[4.5rem] text-[2.5rem] font-[800] capitalize scroll-text top-0 left-1/2 absolute -translate-x-1/2`}
+            >{arr}</h1>
+          </div>
+        ))} */}
       </div>
-      <h1 className='md:text-[4.5rem] text-[2.25rem] font-[800] capitalize'></h1>
+      {/* FIXME: fix uneven scrolling */}
+      <h1 className='md:text-[4.5rem] text-[2.25rem] font-[800] capitalize'>DocVizor</h1>
       <h1 className='capitalize md:text-[2.15rem] text-[1.1rem] text-center font-[700] leading-tight'>let your documents work for you</h1>
 
-      <button className='lg:mt-20 mt-10 bg-violet-500 md:text-[20px] font-[600] text-white px-5 py-3 rounded-full hover:scale-110 duration-100'>Get Started</button>
+      <button className='lg:mt-20 mt-10 bg-violet-500 md:text-[20px] font-[600] text-white px-5 py-3 rounded-full hover:bg-violet-500/90 duration-100'>Get Started</button>
     </div>
   )
 }

@@ -83,6 +83,15 @@
 
 @keyframes slide {
   0% {
-    
+    top: 0;
+  }
+  25% {
+    top: -1.5em;
+  }
+  50% {
+    top: -2.5em;
+  }
+  75% {
+    top: -5em;
   }
 }
