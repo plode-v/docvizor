@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import React, { useEffect, useState, useRef } from 'react'
 
 const HeroBanner = () => {
@@ -12,13 +13,18 @@ const HeroBanner = () => {
   ]
     
   return (
-    <div className='bg-blue-50 h-screen w-full grid grid-cols-3'>
-      <div className='col-span-2 block pt-[28rem] h-full pl-20'>
-        <h1 className='font-[800] md:text-[5rem] text-[2.5rem] leading-none'>DocVizor</h1>
-        <h1 className='font-[600] md:text-[2.5rem] capitalize'>let your documents work for you</h1>
-      </div>
-      <div className='col-span-1 flex border items-center'>
-        example
+    <div className='bg-blue-50 h-screen w-full relative'>
+
+      {/* navbar */}
+      <div className=' top-5 right-5 absolute'>
+        <div className='flex gap-5'>
+          <Link href="#about-us">
+            <button className='h-[50px] w-[120px] bg-blue-200 border-[1px] border-blue-200 rounded-full text-black font-[500] text-[16px] hover:bg-blue-300 hover:border-blue-400 hover:border-[1px] duration-150'>Explore</button>
+          </Link>
+          <Link href="/sign-in">
+            <button className='h-[50px] w-[140px] bg-blue-600 rounded-full text-[#FAFAFA] font-[600] text-[18px] hover:bg-blue-600/90 duration-150'>Get Started</button>
+          </Link>
+        </div>
       </div>
     </div>
   )
