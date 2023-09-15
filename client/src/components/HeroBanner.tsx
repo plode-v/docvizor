@@ -14,10 +14,14 @@ const HeroBanner = () => {
   ]
     
   return (
-    <div className='bg-blue-50 h-screen w-full relative pl-[70px]'>
+    <div className='bg-blue-50 h-screen w-full relative lg:pl-[70px]'>
 
       {/* navbar */}
-      <div className=' top-6 right-6 absolute'>
+      <div className='flex items-center justify-between lg:justify-end w-full p-6'>
+        {/* TODO: change logo */}
+        <div className='lg:hidden'>
+          Logo
+        </div>
         <div className='flex gap-3'>
           <Link href="#about-us">
             <button className='h-[40px] px-6 bg-blue-200 border-[1px] border-blue-200 rounded-full text-black font-[500] text-[0.95rem] hover:bg-blue-300 hover:border-blue-400 hover:border-[1px] duration-150'>Explore</button>
@@ -28,19 +32,20 @@ const HeroBanner = () => {
         </div>
       </div>
 
+
       {/* TODO: Add some animations in the background */}
-      <div className='flex flex-col h-full w-full justify-evenly items-center pt-[150px]'>
+      <div className='flex flex-col h-full w-full justify-evenly items-center lg:pt-[150px] sm:pt-0 pt-[60px]'>
         <div className='flex flex-col justify-center items-center'>
-          <h1 className='font-[800] text-[4.5rem] capitalize leading-none'>DocVizor</h1>
-          <h1 className='font-[500] text-[2.25rem] capitalize'>let your documents work for you</h1>
-          {/* <Link href="/sign-in">
-            <button className='mt-8 bg-blue-600 px-7 py-3 rounded-full text-[#f7f7f7] font-[700]'>Get Started</button>
-          </Link> */}
+          <h1 className='font-[800] md:text-[4.5rem] text-[2rem] capitalize leading-none'>DocVizor</h1>
+          <h1 className='font-[500] md:text-[2.25rem] text-[1rem] capitalize'>let your documents work for you</h1>
+          <Link href="/sign-in">
+            <button className='sm:mt-5 mt-3 bg-blue-600 sm:px-7 px-3 sm:py-3 py-2 rounded-full text-[#f7f7f7] font-[700] sm:text-[1rem] text-[0.8rem]'>Get Started</button>
+          </Link>
 
         </div>
         <div className='flex'>
           <Link href="#about-us">
-            <button className='text-[3rem] bg-purple-300 rounded-full'>
+            <button className='sm:text-[3rem] text-[2rem] mt-10 lg:mt-0 bg-purple-300 rounded-full'>
               <MdExpandMore />
             </button>
           </Link>
