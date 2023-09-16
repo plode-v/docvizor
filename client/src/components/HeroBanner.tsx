@@ -34,18 +34,18 @@ const HeroBanner = () => {
 
 
       {/* TODO: Add some animations in the background */}
-      <div className='flex flex-col h-full w-full justify-evenly items-center lg:pt-[150px] sm:pt-0 pt-[60px]'>
+      <div className='flex flex-col h-full w-full justify-evenly items-center sm:pt-0 3xl:pt-[150px]'>
         <div className='flex flex-col justify-center items-center'>
           <h1 className='font-[800] md:text-[4.5rem] text-[2rem] capitalize leading-none'>DocVizor</h1>
           <h1 className='font-[500] md:text-[2.25rem] text-[1rem] capitalize'>let your documents work for you</h1>
           <Link href="/sign-in">
-            <button className='sm:mt-5 mt-3 bg-blue-600 sm:px-7 px-3 sm:py-3 py-2 rounded-full text-[#f7f7f7] font-[700] sm:text-[1rem] text-[0.8rem]'>Get Started</button>
+            <button className='sm:mt-5 mt-3 bg-blue-600 hover:bg-blue-600/90 duration-100 sm:px-7 px-3 sm:py-3 py-2 rounded-full text-[#f7f7f7] font-[700] sm:text-[1rem] text-[0.8rem]'>Get Started</button>
           </Link>
 
         </div>
         <div className='flex'>
           <Link href="#about-us">
-            <button className='sm:text-[3rem] text-[2rem] mt-10 lg:mt-0 bg-purple-300 rounded-full'>
+            <button className='sm:text-[3rem] text-[2rem] mt-10 lg:mt-0 bg-purple-300 rounded-full hover:translate-y-1 duration-200'>
               <MdExpandMore />
             </button>
           </Link>
