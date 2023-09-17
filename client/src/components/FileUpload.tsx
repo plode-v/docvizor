@@ -1,52 +1,58 @@
 'use client'
 
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Inbox } from "lucide-react";
 import { uploadToS3 } from '@/lib/s3';
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query"
+import axios from 'axios';
 
 
 const FileUpload = () => {
   const [uploading, setUploading] = useState(false);
+  const { mutate, isLoading } = useMutation({
+    mutationFn: async ({ file_key, file_name }: { file_key: string, file_name: string}) => {
+      const response = await axios.post('/api/create-chat', {
+        file_key,
+        file_name
+      });
+      return response.data;
+    } 
+  })
+
   const { getRootProps, getInputProps } = useDropzone({
     accept: { "application/pdf": [".pdf"] },
     maxFiles: 1,
     onDrop: async (acceptedFiles) => {
-      if (acceptedFiles.length === 0) {
-        // FIXME: Get error toast
+      console.log(acceptedFiles);
+
+      const file = acceptedFiles[0];
+      if (file.size > 10 * 1024**2) {
+        // bigger than 10MB
+        toast.error("File size must be smaller than 10MB");
         return;
       }
 
-      console.log(acceptedFiles);
-      const file = acceptedFiles[0];
-
-      if (file.size > 10 * 1024**2) {
-        // bigger than 10MB
-        alert("Pleas upload file that's smaller than 10MB.")
-        return
-      }
-
       try {
+        setUploading(true);
         const data = await uploadToS3(file);
         if (!data?.file_key || !data.file_name) {
           toast.error("Something went wrong");
           return
         }
         mutate(data, {
-          onSuccess: (data) => {
-            console.log(data);
-            toast.success(data.message);
+          onSuccess: () => {
+            toast.success("Upload complete")
           },
           onError: (err) => {
-            console.log(err);
-            toast.error(err);
+            toast.error("Error loading PDF file")
+            console.error(err);
           }
         })
       } catch (err) {
         console.log(err);
-        alert("An error had occured, please try again.")
+        toast.error("Error. Please try again.")
       } finally {
         setUploading(false);
       }
