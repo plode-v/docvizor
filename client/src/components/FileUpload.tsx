@@ -1,35 +1,60 @@
 'use client'
 
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Inbox } from "lucide-react";
 import { uploadToS3 } from '@/lib/s3';
+import axios from 'axios'
+
 
 const FileUpload = () => {
+  // const { getRootProps, getInputProps } = useDropzone({
+  //   accept: { "application/pdf": [".pdf"] },
+  //   maxFiles: 1,
+  //   onDrop: async (acceptedFiles) => {
+  //     if (acceptedFiles.length === 0) {
+  //       // FIXME: Get error toast
+  //       return;
+  //     }
 
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: { "application/pdf": [".pdf"] },
-    maxFiles: 1,
-    onDrop: async (acceptedFiles) => {
-      console.log(acceptedFiles);
-      const file = acceptedFiles[0];
+  //     console.log(acceptedFiles);
+  //     const file = acceptedFiles[0];
 
-      if (file.size > 10 * 1024**2) {
-        // bigger than 10MB
-        alert("Pleas upload file that's smaller than 10MB.")
-        return
-      }
+  //     if (file.size > 10 * 1024**2) {
+  //       // bigger than 10MB
+  //       alert("Pleas upload file that's smaller than 10MB.")
+  //       return
+  //     }
 
-      try {
-        const data = await uploadToS3(file);
-        console.log('data', data);
-      } catch (err) {
-        console.log(err);
-        alert("An error had occured, please try again.")
-      }
+  //     try {
+  //       const data = await uploadToS3(file);
+  //       console.log('data', data);
+  //     } catch (err) {
+  //       console.log(err);
+  //       alert("An error had occured, please try again.")
+  //     }
       
+  //   }
+  // });
+
+  const onDrop = useCallback(async (accpetedFiles: File[]) => {
+    const file = accpetedFiles[0];
+    const reader = new FileReader();
+
+    reader.onerror = () => console.log("error loading file")
+    reader.onabort = () => console.log("file uploading error")
+    reader.onload = async () => {
+      const buffer = reader.result as ArrayBuffer;
+
+      // send buffer to Next api route for analysis
+      const { data } = await axios.post('/api/openai', buffer);
+
+      console.log('analysis result:', data.analysis);
     }
-  });
+
+  }, [])
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 1 });
 
   return (
     <div className='p-1 sm:p-2 sm:w-1/2 sm:h-1/4 rounded-xl bg-white border-gray-50 border-2'>

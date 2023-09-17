@@ -14,7 +14,7 @@ const HeroBanner = () => {
   ]
     
   return (
-    <div className='bg-blue-50 h-screen w-full relative lg:pl-[70px]'>
+    <div className='h-screen w-full relative lg:pl-[70px] bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300'>
 
       {/* navbar */}
       <div className='flex items-center justify-between lg:justify-end w-full p-6'>
@@ -45,7 +45,7 @@ const HeroBanner = () => {
         </div>
         <div className='flex'>
           <Link href="#about-us">
-            <button className='sm:text-[3rem] text-[2rem] mt-10 lg:mt-0 bg-purple-300 rounded-full hover:translate-y-1 duration-200'>
+            <button className='sm:text-[3rem] text-[2rem] mt-10 lg:mt-0 bg-blue-500 text-[#FAFAFA] rounded-full hover:translate-y-2 duration-300 hover:duration-200'>
               <MdExpandMore />
             </button>
           </Link>
