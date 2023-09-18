@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Inbox } from "lucide-react";
+import { Inbox, Loader } from "lucide-react";
 import { uploadToS3 } from '@/lib/s3';
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query"
@@ -46,7 +46,7 @@ const FileUpload = () => {
             toast.success("Upload complete")
           },
           onError: (err) => {
-            toast.error("Error loading PDF file")
+            toast.error("Error creating chat")
             console.error(err);
           }
         })
@@ -67,10 +67,18 @@ const FileUpload = () => {
         className='border-dashed border-2 rounded-xl cursor-pointer flex justify-center items-center h-full bg-gray-50 flex-col p-8'
       >
         <input {...getInputProps()} />
-        <>
-        <Inbox className='h-6 sm:h-10 w-6 sm:w-10 text-blue-700' />
-        <p className='capitalize mt-2 sm:text-[14px] text-[10px] text-gray-400 text-center'>Drop your PDF here</p>
-        </>
+        {uploading || isLoading ? (
+          <>
+            {/* loading */}
+            <Loader className='animate-spin h-10 w-10' />
+            <p>Loading PDF file</p>
+          </>
+        ) : (
+          <>
+            <Inbox className='h-6 sm:h-10 w-6 sm:w-10 text-blue-700' />
+            <p className='capitalize mt-2 sm:text-[14px] text-[10px] text-gray-400 text-center'>Drop your PDF here</p>
+          </>
+        )}
       </div>
     </div>
   )

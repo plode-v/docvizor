@@ -2,8 +2,10 @@
 
 import { downloadS3 } from "@/lib/downloadS3";
 import { NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs";
 
 export const POST = async (req: Request, res: Response) => {
+
     try {
         const body = await req.json();
         const { file_key, file_name } = body;
