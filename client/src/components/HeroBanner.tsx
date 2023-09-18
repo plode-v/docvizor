@@ -1,6 +1,6 @@
-'use client'
 import Link from 'next/link'
-import React, { useEffect, useState, useRef } from 'react'
+import React from 'react'
+import { auth } from "@clerk/nextjs";
 import { MdExpandMore } from "react-icons/md";
 
 const HeroBanner = () => {

@@ -1,6 +1,4 @@
 import React from 'react'
-import { SignIn, SignInButton, SignUpButton } from '@clerk/nextjs'
-import Link from 'next/link'
 
 const Navbar = () => {
   return (
