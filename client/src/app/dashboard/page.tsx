@@ -1,7 +1,8 @@
 'use client'
 import React from 'react'
 import FileUpload from '@/components/FileUpload'
-import SideBar from '@/components/SideBar'
+import SideBar from '@/components/ChatSidebar'
+import { Toaster } from 'react-hot-toast'
 let pdf: string[] = []
 
 const Dashboard = () => {
@@ -33,6 +34,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
+      <Toaster />
     </div>
   )
 }

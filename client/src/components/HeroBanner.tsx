@@ -14,42 +14,17 @@ const HeroBanner = () => {
   ]
     
   return (
-    <div className='h-screen w-full relative lg:pl-[70px] bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300'>
-
-      {/* navbar */}
-      <div className='flex items-center justify-between lg:justify-end w-full p-6'>
-        {/* TODO: change logo */}
-        <div className='lg:hidden'>
-          Logo
-        </div>
-        <div className='flex gap-3'>
-          <Link href="#about-us">
-            <button className='h-[40px] px-6 bg-blue-200 border-[1px] border-blue-200 rounded-full text-black font-[500] text-[0.95rem] hover:bg-blue-300 hover:border-blue-400 hover:border-[1px] duration-150'>Explore</button>
-          </Link>
-          <Link href="/sign-in">
-            <button className='h-[40px] px-4 bg-blue-600 rounded-full text-[#FAFAFA] font-[500] text-[0.95rem] hover:bg-blue-600/90 duration-150'>Get Started</button>
-          </Link>
-        </div>
+<div className='h-[calc(100vh-90px)] flex items-center justify-around flex-col'>
+      <div className='text-[#f7f7f7] text-center'>
+        <h1 className='font-[600] sm:text-[4rem] text-[2.5rem]'>DocVizor</h1>
+        <p className='font-[500] capitalize sm:text-[2rem] text-[1.25rem]'>let your documents work for you</p>
       </div>
-
-
-      {/* TODO: Add some animations in the background */}
-      <div className='flex flex-col h-full w-full justify-evenly items-center sm:pt-0 3xl:pt-[150px]'>
-        <div className='flex flex-col justify-center items-center'>
-          <h1 className='font-[800] md:text-[4.5rem] text-[2rem] capitalize leading-none'>DocVizor</h1>
-          <h1 className='font-[500] md:text-[2.25rem] text-[1rem] capitalize'>let your documents work for you</h1>
-          <Link href="/sign-in">
-            <button className='sm:mt-5 mt-3 bg-blue-600 hover:bg-blue-600/90 duration-100 sm:px-7 px-3 sm:py-3 py-2 rounded-full text-[#f7f7f7] font-[700] sm:text-[1rem] text-[0.8rem]'>Get Started</button>
-          </Link>
-
-        </div>
-        <div className='flex'>
-          <Link href="#about-us">
-            <button className='sm:text-[3rem] text-[2rem] mt-10 lg:mt-0 bg-blue-500 text-[#FAFAFA] rounded-full hover:translate-y-2 duration-300 hover:duration-200'>
-              <MdExpandMore />
-            </button>
-          </Link>
-        </div>
+      <div>
+        <Link href='#about-us'>
+          <button className='bg-purple-500 sm:w-[70px] sm:h-[70px] w-[50px] h-[50px] rounded-full text-[#fafafa] sm:text-[2rem] text-[1.5rem] items-center justify-center flex hover:translate-y-1 duration-300 hover:duration-200'>
+            <MdExpandMore />
+          </button>
+        </Link>
       </div>
     </div>
   )
