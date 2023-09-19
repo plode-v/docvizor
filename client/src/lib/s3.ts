@@ -32,6 +32,7 @@ export const uploadToS3 = async (file: File) => {
 
         await upload.then(() => {
             console.log("successfully uploaded to s3!", file_key)
+            console.log("file_name", file.name);
         })
 
         return Promise.resolve({
