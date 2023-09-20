@@ -47,6 +47,7 @@ const FileUpload = () => {
                 mutate(data, {
                     onSuccess: (data) => {
                         console.log(data);
+                        toast.success(data.message)
                     },
                     onError: (err) => {
                         console.log(err);
@@ -56,6 +57,7 @@ const FileUpload = () => {
                 console.log("data: ", data);
             } catch(err) {
                 console.error(err);
+                toast.error("Internal Error: 500")
             } finally {
                 setIsUploading(false);
             }
@@ -65,7 +67,7 @@ const FileUpload = () => {
   return (
     <div className='h-1/3 w-1/3 p-2 bg-gray-100 rounded-md'>
         <div {...getRootProps({
-            className: "border border-dashed h-full border-gray-300 border-2 flex items-center justify-center flex-col cursor-pointer"
+            className: "border border-dashed h-full border-gray-300 border-2 flex items-center justify-center flex-col cursor-pointer rounded-md"
         })}>
             <input {...getInputProps()} />
             {isLoading || isUploading ? (
