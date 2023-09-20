@@ -1,3 +1,4 @@
+'use client'
 import AboutUs from '@/components/AboutUs'
 import HeroBanner from '@/components/HeroBanner'
 import HomeNavbar from '@/components/HomeNavbar'

@@ -2,6 +2,7 @@ import ChatBox from '@/components/ChatBox'
 import ChatsSidebar from '@/components/ChatsSidebar'
 import InnerNavbar from '@/components/InnerNavbar'
 import React from 'react'
+import { Toaster } from 'react-hot-toast'
 
 const Dashboard = () => {
   return (
@@ -11,6 +12,7 @@ const Dashboard = () => {
             <InnerNavbar />
             <ChatBox />
         </div>
+        <Toaster />
     </div>
   )
 }
