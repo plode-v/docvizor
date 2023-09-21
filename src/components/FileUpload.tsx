@@ -7,8 +7,10 @@ import { uploadToS3 } from '@/lib/s3';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast'
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const FileUpload = () => {
+    const router = useRouter();
     const [isUploading, setIsUploading] = useState<boolean>(false);
     const { mutate, isLoading } = useMutation({
         mutationFn: async ({ 
@@ -17,10 +19,7 @@ const FileUpload = () => {
         file_key: string, 
         file_name: string 
         }) => {
-            const response = await axios.post('/api/create-chat', {
-                file_key,
-                file_name
-            })
+            const response = await axios.post('/api/create-chat', { file_key, file_name });
             return response.data;
 
         }
@@ -45,9 +44,11 @@ const FileUpload = () => {
                 }
 
                 mutate(data, {
-                    onSuccess: (data) => {
-                        console.log(data);
-                        toast.success(data.message)
+                    onSuccess: ({ chat_id }) => {
+                        // console.log(data);
+                        toast.success("Chat has been created")
+                        // router.push(`chat/${chat_id}`)
+                        console.log(chat_id);
                     },
                     onError: (err) => {
                         console.log(err);
