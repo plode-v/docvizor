@@ -1,19 +1,20 @@
 'use client'
 import React from 'react'
 import axios from 'axios';
+import ChatSidebar from '@/components/ChatSidebar';
+import ChatBox from '@/components/ChatBox';
+import { Toaster } from 'react-hot-toast';
 
 const page = () => {
 
-    const handlePost = async () => {
-        const response = await axios.post("/api/create-chat")
-
-        console.log(response)
-    }
-
   return (
-    <div>
-        dashboard
-        <button onClick={handlePost}>click me</button>
+    <div className='max-w-screen max-h-screen flex'>
+        {/* chat sidebar */}
+        <ChatSidebar />
+
+        {/* chatbox */}
+        <ChatBox />
+        <Toaster />
     </div>
   )
 }
