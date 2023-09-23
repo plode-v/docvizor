@@ -6,8 +6,10 @@ import { uploadToS3 } from '@/lib/s3';
 import { toast } from "react-hot-toast"
 import { useMutation } from "@tanstack/react-query";
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const FileUpload = () => {
+  const router = useRouter();
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const { mutate, isLoading } = useMutation({
     mutationFn: async ({ file_key, file_name }: { file_key: string, file_name: string }) => {
@@ -37,9 +39,9 @@ const FileUpload = () => {
         }
 
         mutate(data, {
-          onSuccess: ({ data }) => {
-            console.log(data)
-            toast.success("Succeeded")
+          onSuccess: ({ chat_id }) => {
+            toast.success("Chat created!")
+            router.push(`/chat/${chat_id}`)
           },
           onError: (err) => {
             console.log(err);
@@ -61,8 +63,17 @@ const FileUpload = () => {
     <div className='rounded-lg h-1/4 w-1/3 p-2 border-2 border-dashed border-slate-300'>
         <div {...getRootProps()} className='bg-slate-100 rounded-lg h-full flex items-center justify-center flex-col cursor-pointer'>
             <input {...getInputProps()} />
-            <Upload className='h-[35px] w-[35px]' />
-            <p>Drop PDF File here</p>
+            { isUploading || isLoading ? (
+              <>
+                <Loader2 className='h-[35px] w-[35px] animate-spin' />
+                <p>Uploading PDF</p>
+              </>
+            ) : (
+              <>
+                <Upload className='h-[35px] w-[35px]' />
+                <p>Drop PDF File here</p>
+              </>
+            )}
         </div>
     </div>
   )
