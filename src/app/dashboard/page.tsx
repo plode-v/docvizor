@@ -12,7 +12,7 @@ const page = () => {
   return (
     <div className='max-w-screen max-h-screen'>
       <ChatNavbar />
-      <div className='h-[calc(100vh-90px)] w-full bg-neutral-800 flex items-center justify-center'>
+      <div className='h-[calc(100vh-90px)] w-full bg-slate-100 flex items-center justify-center'>
         <FileUpload />
       </div>
     </div>

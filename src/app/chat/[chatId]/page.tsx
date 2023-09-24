@@ -37,7 +37,15 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
     return (
         <div className="flex max-h-screen overflow-scroll">
-
+            <div className="flex w-full max-h-screen overflow-scroll">
+                {/* chat sidebar */}
+                <ChatSidebar />
+            </div>
+            <div className="flex-[5] border-l-4 border-l-slate-200">
+                <ChatBox />
+            </div>
         </div>
     )
 }
+
+export default ChatPage;

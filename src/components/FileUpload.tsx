@@ -65,7 +65,7 @@ const FileUpload = () => {
         <input {...getInputProps()} />
         {isLoading || isUploading ? (
           <>
-            <Loader2 className='h-[35px] w-[35px]' />
+            <Loader2 className='h-[35px] w-[35px] animate-spin' />
             <p className='text-[1.25rem]'>Loading...</p>
           </>
         ) : (
