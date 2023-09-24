@@ -60,21 +60,21 @@ const FileUpload = () => {
   });
 
   return (
-    <div className='rounded-lg h-1/4 w-1/3 p-2 border-2 border-dashed border-slate-300'>
-        <div {...getRootProps()} className='bg-slate-100 rounded-lg h-full flex items-center justify-center flex-col cursor-pointer'>
-            <input {...getInputProps()} />
-            { isUploading || isLoading ? (
-              <>
-                <Loader2 className='h-[35px] w-[35px] animate-spin' />
-                <p>Uploading PDF</p>
-              </>
-            ) : (
-              <>
-                <Upload className='h-[35px] w-[35px]' />
-                <p>Drop PDF File here</p>
-              </>
-            )}
-        </div>
+    <div className='rounded-lg h-1/4 w-1/3 p-2 bg-[#fafafa] border-0'>
+      <div {...getRootProps()} className='bg-slate-200 rounded-lg h-full items-center justify-center cursor-pointer border-dashed border-2 border-black flex flex-col gap-2'>
+        <input {...getInputProps()} />
+        {isLoading || isUploading ? (
+          <>
+            <Loader2 className='h-[35px] w-[35px]' />
+            <p className='text-[1.25rem]'>Loading...</p>
+          </>
+        ) : (
+          <>
+            <Upload className='h-[35px] w-[35px]' />
+            <p className='text-[1.25rem]'>Drop PDF Here</p>
+          </>
+        )}
+      </div>
     </div>
   )
 }

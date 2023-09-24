@@ -41,3 +41,12 @@ model Message {
   @@map("messages")
   @@index([chatId])
 }
+
+model UserSubscription {
+  id Int @id @default(autoincrement())
+  userId String @db.VarChar(256) @map("user_id") @unique
+  stripeCustomerId String @db.VarChar(256) @unique @map("stripe_customer_id")
+  stripeSubscriptionId String @db.VarChar(256) @unique @map("stripe_subscription_id")
+  stripePriceId String? @db.VarChar(256) @map("stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map("stripe_current_period_end")
+}

@@ -1,7 +1,6 @@
 import React from 'react'
 import ChatNavbar from './ChatNavbar'
 import FileUpload from './FileUpload'
-import { loadS3IntoSystem } from '@/lib/pinecone'
 
 const ChatBox = () => {
   return (
